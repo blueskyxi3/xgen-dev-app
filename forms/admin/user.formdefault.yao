@@ -1,0 +1,349 @@
+{
+  "name": "admin.user",
+  "action": {
+    "bind": {
+      "model": "admin.user",
+      "option": {
+        "withs": {}
+      }
+    }
+  },
+  "layout": {
+    "primary": "id",
+    "actions": [
+      {
+        "title": "返回",
+        "icon": "icon-arrow-left",
+        "showWhenAdd": true,
+        "showWhenView": true,
+        "action": [
+          {
+            "name": "CloseModal",
+            "type": "Common.closeModal",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "title": "保存",
+        "icon": "icon-check",
+        "style": "primary",
+        "showWhenAdd": true,
+        "action": [
+          {
+            "name": "Submit",
+            "type": "Form.submit",
+            "payload": {}
+          },
+          {
+            "name": "Back",
+            "type": "Common.closeModal",
+            "payload": {}
+          }
+        ]
+      },
+      {
+        "icon": "icon-trash-2",
+        "style": "danger",
+        "title": "Delete",
+        "action": [
+          {
+            "name": "Confirm",
+            "type": "Common.confirm",
+            "payload": {
+              "title": "确认删除",
+              "content": "删除后不可撤销！"
+            }
+          },
+          {
+            "name": "Delete",
+            "payload": {
+              "model": "admin.user"
+            },
+            "type": "Form.delete"
+          },
+          {
+            "name": "Back",
+            "type": "Common.closeModal",
+            "payload": {}
+          }
+        ]
+      }
+    ],
+    "form": {
+      "frame": {},
+      "sections": [
+        {
+          "columns": [
+            {
+              "width": 12,
+              "name": "ID"
+            },
+            {
+              "width": 12,
+              "name": "类型"
+            },
+            {
+              "name": "邮箱",
+              "width": 12
+            },
+            {
+              "name": "手机号",
+              "width": 12
+            },
+            {
+              "width": 12,
+              "name": "登录密码"
+            },
+            {
+              "name": "操作密码",
+              "width": 12
+            },
+            {
+              "name": "姓名",
+              "width": 12
+            },
+            {
+              "name": "身份证号码",
+              "width": 12
+            },
+            {
+              "name": "API Key",
+              "width": 12
+            },
+            {
+              "name": "API 密钥",
+              "width": 12
+            },
+            {
+              "name": "扩展信息",
+              "width": 24
+            },
+            {
+              "name": "状态",
+              "width": 12
+            },
+            {
+              "name": "创建时间",
+              "width": 12
+            },
+            {
+              "name": "更新时间",
+              "width": 12
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "fields": {
+    "form": {
+      "邮箱": {
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 邮箱"
+          }
+        },
+        "bind": "email",
+        "view": {
+          "type": "",
+          "props": {}
+        }
+      },
+      "更新时间": {
+        "bind": "updated_at",
+        "edit": {
+          "type": "DatePicker",
+          "props": {
+            "placeholder": "请选择 更新时间",
+            "showTime": {
+              "format": "HH:mm:ss"
+            }
+          }
+        }
+      },
+      "登录密码": {
+        "bind": "password",
+        "view": {
+          "props": {},
+          "type": ""
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 登录密码",
+            "type": "password"
+          }
+        }
+      },
+      "API Key": {
+        "bind": "key",
+        "view": {
+          "props": {},
+          "type": ""
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 API Key"
+          }
+        }
+      },
+      "状态": {
+        "edit": {
+          "props": {
+            "options": [
+              {
+                "label": "开启",
+                "value": "enabled"
+              },
+              {
+                "label": "关闭",
+                "value": "disabled"
+              }
+            ],
+            "placeholder": "请选择 状态"
+          },
+          "type": "Select"
+        },
+        "bind": "status"
+      },
+      "操作密码": {
+        "bind": "password2nd",
+        "view": {
+          "type": "",
+          "props": {}
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "type": "password",
+            "placeholder": "请输入 操作密码"
+          }
+        }
+      },
+      "API 密钥": {
+        "bind": "secret",
+        "view": {
+          "type": "",
+          "props": {}
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 API 密钥"
+          }
+        }
+      },
+      "手机号": {
+        "bind": "mobile",
+        "view": {
+          "type": "",
+          "props": {}
+        },
+        "edit": {
+          "props": {
+            "placeholder": "请输入 手机号"
+          },
+          "type": "Input"
+        }
+      },
+      "扩展信息": {
+        "edit": {
+          "props": {
+            "autoSize": {
+              "minRows": 2,
+              "maxRows": 6
+            },
+            "placeholder": "请输入 扩展信息"
+          },
+          "type": "TextArea"
+        },
+        "bind": "extra",
+        "view": {
+          "type": "",
+          "props": {}
+        }
+      },
+      "ID": {
+        "bind": "id",
+        "edit": {
+          "type": "InputNumber",
+          "props": {
+            "placeholder": "请输入 ID",
+            "disabled": true
+          }
+        }
+      },
+      "类型": {
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "请选择 类型",
+            "options": [
+              {
+                "label": "admin",
+                "value": "admin"
+              },
+              {
+                "value": "staff",
+                "label": "staff"
+              },
+              {
+                "label": "user",
+                "value": "user"
+              },
+              {
+                "label": "robot",
+                "value": "robot"
+              }
+            ]
+          }
+        },
+        "bind": "type"
+      },
+      "身份证号码": {
+        "bind": "idcard",
+        "view": {
+          "type": "",
+          "props": {}
+        },
+        "edit": {
+          "props": {
+            "placeholder": "请输入 身份证号码"
+          },
+          "type": "Input"
+        }
+      },
+      "姓名": {
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 姓名"
+          }
+        },
+        "bind": "name",
+        "view": {
+          "type": "",
+          "props": {}
+        }
+      },
+      "创建时间": {
+        "bind": "created_at",
+        "edit": {
+          "type": "DatePicker",
+          "props": {
+            "showTime": {
+              "format": "HH:mm:ss"
+            },
+            "placeholder": "请选择 创建时间"
+          }
+        }
+      }
+    }
+  },
+  "config": {
+    "full": true
+  }
+}

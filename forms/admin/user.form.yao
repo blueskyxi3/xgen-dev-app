@@ -1,11 +1,10 @@
 {
-  "name": "admin",
+  "name": "admin.user",
   "action": {
     "bind": {
       "model": "admin.user",
       "option": {
-        "withs": {},
-        "form": "admin.user"
+        "withs": {}
       }
     }
   }

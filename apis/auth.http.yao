@@ -7,8 +7,26 @@
       "path": "/auto-login",
       "method": "POST",
       "process": "scripts.auth.AutoLogin",
-      "in": [":payload"],
-      "out": { "status": 200, "type": "application/json" }
+      "in": [
+        ":payload"
+      ],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/test",
+      "method": "GET",
+      "process": "scripts.user.Inspect",
+      "in": [
+        ":query",
+        ":payload"
+      ],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
     }
   ]
 }

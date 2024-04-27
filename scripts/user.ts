@@ -14,3 +14,10 @@ function Login(payload: Record<string, any>) {
   info["logout_redirect"] = "/?foo=bar"; // info["logout_redirect"] = "https://yaoapps.com";
   return info;
 }
+
+function Inspect() {
+  console.log("----------user-----------");
+  let xx = Process("session.Get", "user");
+  console.log("user:", xx);
+  return { "name:": "val1" };
+}

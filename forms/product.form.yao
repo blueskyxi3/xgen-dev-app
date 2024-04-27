@@ -1,0 +1,8 @@
+{
+    "name": "产品",
+    "action": {
+        "bind": {
+            "model": "product"
+        }
+    }
+}

@@ -1,0 +1,478 @@
+{
+  "name": "admin.user",
+  "action": {
+    "bind": {
+      "model": "admin.user",
+      "option": {
+        "withs": {},
+        "form": "admin.user"
+      }
+    }
+  },
+  "layout": {
+    "primary": "id",
+    "header": {
+      "actions": [],
+      "preset": {}
+    },
+    "filter": {
+      "actions": [
+        {
+          "width": 3,
+          "icon": "icon-plus",
+          "action": [
+            {
+              "name": "OpenModal",
+              "type": "Common.openModal",
+              "payload": {
+                "Form": {
+                  "type": "edit",
+                  "model": "admin.user"
+                }
+              }
+            }
+          ],
+          "title": "创建"
+        }
+      ],
+      "columns": [
+        {
+          "name": "类型"
+        },
+        {
+          "name": "邮箱"
+        }
+      ]
+    },
+    "table": {
+      "columns": [
+        {
+          "name": "ID",
+          "width": 100
+        },
+        {
+          "name": "类型",
+          "width": 160
+        },
+        {
+          "name": "邮箱",
+          "width": 160
+        },
+        {
+          "name": "手机号",
+          "width": 160
+        },
+        {
+          "name": "登录密码",
+          "width": 160
+        },
+        {
+          "name": "操作密码",
+          "width": 160
+        },
+        {
+          "name": "姓名",
+          "width": 160
+        },
+        {
+          "name": "身份证号码",
+          "width": 160
+        },
+        {
+          "name": "API Key",
+          "width": 160
+        },
+        {
+          "name": "API 密钥",
+          "width": 160
+        },
+        {
+          "name": "扩展信息",
+          "width": 160
+        },
+        {
+          "name": "状态",
+          "width": 160
+        },
+        {
+          "name": "创建时间",
+          "width": 160
+        },
+        {
+          "name": "更新时间",
+          "width": 160
+        }
+      ],
+      "operation": {
+        "width": 140,
+        "actions": [
+          {
+            "icon": "icon-eye",
+            "action": [
+              {
+                "payload": {
+                  "Form": {
+                    "type": "view",
+                    "model": "admin.user"
+                  }
+                },
+                "name": "OpenModal",
+                "type": "Common.openModal"
+              }
+            ],
+            "title": "查看"
+          },
+          {
+            "title": "编辑",
+            "icon": "icon-edit-2",
+            "action": [
+              {
+                "payload": {
+                  "Form": {
+                    "type": "edit",
+                    "model": "admin.user"
+                  }
+                },
+                "name": "OpenModal",
+                "type": "Common.openModal"
+              }
+            ]
+          },
+          {
+            "icon": "icon-trash-2",
+            "style": "danger",
+            "action": [
+              {
+                "type": "Common.confirm",
+                "payload": {
+                  "content": "请确认删除，删除后数据无法恢复",
+                  "title": "确认"
+                },
+                "name": "Confirm"
+              },
+              {
+                "payload": {
+                  "model": "admin.user"
+                },
+                "name": "Delete",
+                "type": "Table.delete"
+              }
+            ],
+            "title": "删除"
+          }
+        ]
+      },
+      "props": {
+        "scroll": {
+          "x": "max-content"
+        }
+      }
+    }
+  },
+  "fields": {
+    "filter": {
+      "类型": {
+        "bind": "where.type.eq",
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              {
+                "label": "admin",
+                "value": "admin"
+              },
+              {
+                "value": "staff",
+                "label": "staff"
+              },
+              {
+                "label": "user",
+                "value": "user"
+              },
+              {
+                "value": "robot",
+                "label": "robot"
+              }
+            ],
+            "placeholder": "请选择 类型"
+          }
+        }
+      },
+      "邮箱": {
+        "bind": "where.email.match",
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 邮箱"
+          }
+        }
+      }
+    },
+    "table": {
+      "邮箱": {
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 邮箱"
+          }
+        },
+        "bind": "email"
+      },
+      "姓名": {
+        "bind": "name",
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "props": {
+            "placeholder": "请输入 姓名"
+          },
+          "type": "Input"
+        }
+      },
+      "创建时间": {
+        "edit": {
+          "type": "DatePicker",
+          "props": {
+            "showTime": {
+              "format": "HH:mm:ss"
+            },
+            "placeholder": "请选择 创建时间"
+          }
+        },
+        "bind": "created_at",
+        "view": {
+          "type": "Text",
+          "props": {
+            "format": "YYYY-MM-DD HH:mm:ss"
+          }
+        }
+      },
+      "API Key": {
+        "bind": "key",
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 API Key"
+          }
+        }
+      },
+      "API 密钥": {
+        "bind": "secret",
+        "view": {
+          "props": {},
+          "type": "Text"
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 API 密钥"
+          }
+        }
+      },
+      "手机号": {
+        "edit": {
+          "props": {
+            "placeholder": "请输入 手机号"
+          },
+          "type": "Input"
+        },
+        "bind": "mobile",
+        "view": {
+          "type": "Text",
+          "props": {}
+        }
+      },
+      "类型": {
+        "bind": "type",
+        "view": {
+          "props": {
+            "placeholder": "请选择 类型",
+            "options": [
+              {
+                "value": "admin",
+                "label": "admin"
+              },
+              {
+                "label": "staff",
+                "value": "staff"
+              },
+              {
+                "label": "user",
+                "value": "user"
+              },
+              {
+                "label": "robot",
+                "value": "robot"
+              }
+            ]
+          },
+          "type": "Tag"
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "options": [
+              {
+                "label": "admin",
+                "value": "admin"
+              },
+              {
+                "label": "staff",
+                "value": "staff"
+              },
+              {
+                "label": "user",
+                "value": "user"
+              },
+              {
+                "label": "robot",
+                "value": "robot"
+              }
+            ],
+            "placeholder": "请选择 类型"
+          }
+        }
+      },
+      "ID": {
+        "bind": "id",
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "type": "InputNumber",
+          "props": {
+            "disabled": true,
+            "placeholder": "请输入 ID"
+          }
+        }
+      },
+      "状态": {
+        "bind": "status",
+        "view": {
+          "props": {
+            "placeholder": "请选择 状态",
+            "options": [
+              {
+                "label": "开启",
+                "value": "enabled"
+              },
+              {
+                "label": "关闭",
+                "value": "disabled"
+              }
+            ]
+          },
+          "type": "Tag"
+        },
+        "edit": {
+          "type": "Select",
+          "props": {
+            "placeholder": "请选择 状态",
+            "options": [
+              {
+                "label": "开启",
+                "value": "enabled"
+              },
+              {
+                "label": "关闭",
+                "value": "disabled"
+              }
+            ]
+          }
+        }
+      },
+      "更新时间": {
+        "bind": "updated_at",
+        "view": {
+          "type": "Text",
+          "props": {
+            "format": "YYYY-MM-DD HH:mm:ss"
+          }
+        },
+        "edit": {
+          "type": "DatePicker",
+          "props": {
+            "showTime": {
+              "format": "HH:mm:ss"
+            },
+            "placeholder": "请选择 更新时间"
+          }
+        }
+      },
+      "登录密码": {
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 登录密码",
+            "type": "password"
+          }
+        },
+        "bind": "password"
+      },
+      "扩展信息": {
+        "edit": {
+          "type": "TextArea",
+          "props": {
+            "placeholder": "请输入 扩展信息",
+            "autoSize": {
+              "minRows": 2,
+              "maxRows": 6
+            }
+          }
+        },
+        "bind": "extra",
+        "view": {
+          "props": {
+            "title": "扩展信息"
+          },
+          "type": "Tooltip"
+        }
+      },
+      "身份证号码": {
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 身份证号码"
+          }
+        },
+        "bind": "idcard"
+      },
+      "操作密码": {
+        "bind": "password2nd",
+        "view": {
+          "type": "Text",
+          "props": {}
+        },
+        "edit": {
+          "type": "Input",
+          "props": {
+            "placeholder": "请输入 操作密码",
+            "type": "password"
+          }
+        }
+      }
+    }
+  },
+  "config": {
+    "full": true
+  }
+}
