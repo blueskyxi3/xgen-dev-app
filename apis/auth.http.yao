@@ -18,10 +18,24 @@
     {
       "path": "/test",
       "method": "GET",
+      "guard": "bearer-jwt,scripts.guard.User",
       "process": "scripts.user.Inspect",
       "in": [
         ":query",
         ":payload"
+      ],
+      "out": {
+        "status": 200,
+        "type": "application/json"
+      }
+    },
+    {
+      "path": "/reqSMSCode",
+      "guard": "-",
+      "method": "GET",
+      "process": "scripts.login.ReqSMSCode",
+      "in": [
+        "$query.phone"
       ],
       "out": {
         "status": 200,

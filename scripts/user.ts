@@ -17,7 +17,9 @@ function Login(payload: Record<string, any>) {
 
 function Inspect() {
   console.log("----------user-----------");
-  let xx = Process("session.Get", "user");
-  console.log("user:", xx);
-  return { "name:": "val1" };
+  let user_id = Process("session.Get", "user");
+  console.log("user_id:", user_id);
+  let user = Process("session.Get", "user");
+  console.log("user:", user);
+  return user;
 }

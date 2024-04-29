@@ -15,7 +15,7 @@ import { Process, Exception } from "./__types/yao";
  */
 function AutoLogin(payload: Record<string, any>) {
   payload = payload || {};
-  console.log("payload--->", payload);
+
   // Custom user authentication logic
   if (payload.fake == "invalid") {
     throw new Exception("Invalid username or password", 401);
@@ -104,6 +104,9 @@ function maskSensitiveInfo(input: User): User {
   return input;
 }
 
+function refreshToken() {
+
+}
 /**
  * JWT Token
  */
